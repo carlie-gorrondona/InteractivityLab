@@ -26,7 +26,8 @@ const addMovie = event => {
 const deleteMovie = event => {
 
     event.target.parentNode.remove("checked");
-    message.textContent = "Movie deleted!";
+    message.textContent = `${event.target.parentNode.firstChild.textContent} deleted!`;
+    revealMessage();
 }
 
 const crossOffMovie = event => {
@@ -35,12 +36,22 @@ const crossOffMovie = event => {
 
     if (event.target.classList.contains("checked")) {
 
-        message.textContent = "Movie watched!";
+        message.textContent = `${event.target.textContent} watched!`;
     } else {
 
-        message.textContent = "Movie added back";
+        message.textContent = `${event.target.textContent} added back.`;
     }
     
+    revealMessage();
+}
+
+const revealMessage = () => {
+
+    message.classList.remove("hide");
+
+    setTimeout(() => {
+        message.classList.add("hide")
+    }, 1000);
 }
 
 
